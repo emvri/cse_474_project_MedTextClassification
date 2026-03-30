@@ -1,0 +1,87 @@
+ Naive Bayes + Bag-of-Words 
+Accuracy: 0.7726
+
+              precision    recall  f1-score   support
+
+  BACKGROUND       0.57      0.57      0.57      2663
+ CONCLUSIONS       0.68      0.70      0.69      4426
+     METHODS       0.84      0.85      0.85      9751
+   OBJECTIVE       0.61      0.65      0.63      2377
+     RESULTS       0.84      0.81      0.83     10276
+
+    accuracy                           0.77     29493
+   macro avg       0.71      0.72      0.71     29493
+weighted avg       0.77      0.77      0.77     29493
+
+Confusion Matrix:
+[[1523  413  138  539   50]
+ [ 452 3091  101  146  636]
+ [ 156  198 8287  247  863]
+ [ 452  178  179 1544   24]
+ [  82  645 1158   50 8341]]
+
+ Naive Bayes + TF-IDF 
+Accuracy: 0.7651
+
+              precision    recall  f1-score   support
+
+  BACKGROUND       0.65      0.45      0.53      2663
+ CONCLUSIONS       0.68      0.67      0.68      4426
+     METHODS       0.80      0.86      0.83      9751
+   OBJECTIVE       0.70      0.51      0.59      2377
+     RESULTS       0.79      0.85      0.82     10276
+
+    accuracy                           0.77     29493
+   macro avg       0.73      0.67      0.69     29493
+weighted avg       0.76      0.77      0.76     29493
+
+Confusion Matrix:
+[[1197  641  301  396  128]
+ [ 218 2966  192   53  997]
+ [  60  128 8405   58 1100]
+ [ 340  289  445 1223   80]
+ [  28  333 1135    7 8773]]
+
+ Logistic Regression + Bag-of-Words 
+Accuracy: 0.8127
+
+              precision    recall  f1-score   support
+
+  BACKGROUND       0.63      0.59      0.61      2663
+ CONCLUSIONS       0.76      0.72      0.74      4426
+     METHODS       0.85      0.91      0.88      9751
+   OBJECTIVE       0.72      0.60      0.66      2377
+     RESULTS       0.86      0.87      0.86     10276
+
+    accuracy                           0.81     29493
+   macro avg       0.76      0.74      0.75     29493
+weighted avg       0.81      0.81      0.81     29493
+
+Confusion Matrix:
+[[1574  397  239  398   55]
+ [ 318 3178  134   61  735]
+ [  73  106 8850   78  644]
+ [ 504  180  226 1438   29]
+ [  39  338  960   10 8929]]
+
+ Logistic Regression + TF-IDF 
+Accuracy: 0.8134
+
+              precision    recall  f1-score   support
+
+  BACKGROUND       0.64      0.59      0.61      2663
+ CONCLUSIONS       0.75      0.73      0.74      4426
+     METHODS       0.85      0.90      0.88      9751
+   OBJECTIVE       0.71      0.62      0.66      2377
+     RESULTS       0.86      0.87      0.87     10276
+
+    accuracy                           0.81     29493
+   macro avg       0.76      0.74      0.75     29493
+weighted avg       0.81      0.81      0.81     29493
+
+Confusion Matrix:
+[[1561  404  224  429   45]
+ [ 300 3218  122   69  717]
+ [  70  117 8815   97  652]
+ [ 476  177  232 1463   29]
+ [  41  358  937    7 8933]]
