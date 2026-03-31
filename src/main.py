@@ -6,6 +6,7 @@ from preprocess import preprocess
 from features import get_bow, get_tfidf
 from models import train_nb
 from models import train_lr
+from models import train_svm
 
 
 
@@ -160,3 +161,48 @@ with open("results/metrics.txt", "a") as f:
     f.write(classification_report(y_test, y_pred_lr_tfidf, target_names=le.classes_))
     f.write("\nConfusion Matrix:\n")
     f.write(str(confusion_matrix(y_test, y_pred_lr_tfidf)))
+
+
+
+# Experiment 5: Bag-of-Words + SVM
+# -
+
+# Same Bag-of-Words feature representation, now using Logistic Regression
+# so we can compare model performance fairly on the same features.
+print("Training SVM...")
+svm_bow = train_svm(X_train_bow, y_train)
+print("Done!")
+y_pred_svm_bow = svm_bow.predict(X_test_bow)
+
+print("\n SVM + Bag-of-Words ")
+print("Accuracy:", accuracy_score(y_test, y_pred_svm_bow))
+print(classification_report(y_test, y_pred_svm_bow, target_names=le.classes_))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_svm_bow))
+
+with open("results/metrics.txt", "a") as f:
+    f.write("\n\n SVM + Bag-of-Words \n")
+    f.write(f"Accuracy: {accuracy_score(y_test, y_pred_svm_bow):.4f}\n\n")
+    f.write(classification_report(y_test, y_pred_svm_bow, target_names=le.classes_))
+    f.write("\nConfusion Matrix:\n")
+    f.write(str(confusion_matrix(y_test, y_pred_svm_bow)))
+
+
+# Experiment 6: TF-IDF + SVM
+# -
+# Same SVM model, but now using TF-IDF features
+# to compare how feature weighting affects performance.
+
+svm_tfidf = train_svm(X_train_tfidf, y_train)
+y_pred_svm_tfidf = svm_tfidf.predict(X_test_tfidf)
+
+print("\n SVM + TF-IDF ")
+print("Accuracy:", accuracy_score(y_test, y_pred_svm_tfidf))
+print(classification_report(y_test, y_pred_svm_tfidf, target_names=le.classes_))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_svm_tfidf))
+
+with open("results/metrics.txt", "a") as f:
+    f.write("\n\n SVM + TF-IDF \n")
+    f.write(f"Accuracy: {accuracy_score(y_test, y_pred_svm_tfidf):.4f}\n\n")
+    f.write(classification_report(y_test, y_pred_svm_tfidf, target_names=le.classes_))
+    f.write("\nConfusion Matrix:\n")
+    f.write(str(confusion_matrix(y_test, y_pred_svm_tfidf)))
