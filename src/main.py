@@ -54,8 +54,8 @@ test_df["clean"] = test_df["text"].apply(preprocess)
 
 # Encode labels
 # -
-# sklearn models require numeric targets, here we convert text labels
-# like BACKGROUND / METHODS / RESULTS into integer values.
+# sklearn models require numeric targets
+# Convert labels into integer values
 le = LabelEncoder()
 y_train = le.fit_transform(train_df["label"])
 y_test = le.transform(test_df["label"])
@@ -144,7 +144,7 @@ with open("results/metrics.txt", "a") as f:
 
 # Experiment 3: Bag-of-Words + Logistic Regression
 # -
-# Same Bag-of-Words feature representation, now using SVM
+# Same Bag-of-Words feature representation, now using Logistic Regression
 # so we can compare model performance fairly on the same features.
 start = time.time()
 lr_bow = train_lr(X_train_bow, y_train)
@@ -203,7 +203,7 @@ with open("results/metrics.txt", "a") as f:
 
 # Experiment 5: Bag-of-Words + SVM
 # -
-# Same Bag-of-Words feature representation, now using Logistic Regression
+# Same Bag-of-Words feature representation, now using SVM
 # so we can compare model performance fairly on the same features.
 print("Training SVM...")
 start = time.time()
@@ -262,7 +262,6 @@ with open("results/metrics.txt", "a") as f:
     f.write("\nConfusion Matrix:\n")
     f.write(str(confusion_matrix(y_test, y_pred_svm_tfidf)))
 
-import matplotlib.pyplot as plt
 
 models = [
     "NB (BoW)", "NB (TF-IDF)",
